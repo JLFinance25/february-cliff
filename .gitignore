@@ -1,0 +1,10 @@
+# Raw downloads and processed building-level tables are not in this repository.
+# Re-download them with the scripts in src/ (see data/raw/SOURCES.md).
+data/raw/*
+!data/raw/SOURCES.md
+data/processed/*
+data/GO_*.txt
+.venv/
+__pycache__/
+*.pyc
+.DS_Store

@@ -1,0 +1,5 @@
+cell,rows,events,pass
+Early-quiet,649,499,True
+Early-busy,82,53,True
+Late-quiet,996,562,True
+Late-busy,1369,861,True

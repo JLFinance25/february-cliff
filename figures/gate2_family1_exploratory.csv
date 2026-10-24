@@ -1,0 +1,15 @@
+item,description,term,hr,lo,hi,K,events,rows
+E3,filing-timing penalty among filings in the quiet workload band (H2 check),timing=Middle,0.902916780456239,0.664975116793516,1.225998825881795,39,1245,52503
+E3,filing-timing penalty among filings in the quiet workload band (H2 check),timing=Last-minute,1.5347473697315606,0.9865287383375619,2.387613657223208,39,1245,52503
+E3,filing-timing penalty among filings in the quiet workload band (H2 check),timing=Past-deadline,1.0761085867837608,0.6787934601787422,1.7059823915286567,39,1245,52503
+E4,workload x filing-timing interactions (x = effect for Early filers; x*timing = extra for that group),x,1.1462577151449829,0.8406791656877065,1.5629110404497448,40,3207,124156
+E4,workload x filing-timing interactions (x = effect for Early filers; x*timing = extra for that group),x*timing=Middle,1.0942806847277582,0.09341590631960069,12.818483105772748,40,3207,124156
+E4,workload x filing-timing interactions (x = effect for Early filers; x*timing = extra for that group),x*timing=Last-minute,0.8386027740575874,0.6309122632780005,1.1146630896080778,40,3207,124156
+E4,workload x filing-timing interactions (x = effect for Early filers; x*timing = extra for that group),x*timing=Past-deadline,0.873696629675423,0.5883110464443672,1.297520767831406,40,3207,124156
+E5,"crude workload HR without filing-timing terms, next to C5 (size of the late-filer trap)",x,0.9918955104429402,0.8655096041090803,1.1367368992393818,40,3207,124156
+E7,"public-owned lots on their own (PLUTO OwnerType C, M, O)",x,1.7351840133281742,0.9592293798554642,3.1388358440015085,36,516,52093
+E8,C6 on early filers that were inside their own window (leaves out those who filed before it opened),x,1.103705344171468,0.7094355643472928,1.7170910903986272,30,387,15025
+E9,"filings carried over (prior SWARMP or UNSAFE), fitted separately",x,0.9558252683451804,0.820426510496444,1.1135695055176988,40,1827,69609
+E9,"filings not carried over, fitted separately",x,1.078793051930256,0.8288059979211113,1.4041819820466237,40,1380,54547
+E10,workload from the building's own deadline group (x_own) versus the other two groups (x_other),x_own,0.9750332522366831,0.847355441452392,1.1219492983224761,40,3207,124156
+E10,workload from the building's own deadline group (x_own) versus the other two groups (x_other),x_other,1.0774265984812288,0.7804605812723437,1.4873884767150718,40,3207,124156
