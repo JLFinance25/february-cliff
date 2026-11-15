@@ -4,6 +4,10 @@ Drafted Oct 22, 2026. Final writing pass Oct 24, 2026 (clarity and flow only; no
 
 Jayden Ling. Code and draft text by Claude (Anthropic's AI assistant) under my direction; I read and approved sections 1 and 7 on Oct 26, 2026.
 
+## Abstract
+
+**Objective.** NYC's facade program (FISP) gives three groups of tall buildings deadlines that all fall on Feb 21, so UNSAFE facade reports arrive in waves. We tested whether those waves slow the repairs that follow. **Data.** Public NYC Open Data: 87,455 facade filings (`xubg-57si`, pulled Oct 17, 2026), two shed-permit files (about 5 million rows) and PLUTO. The headline sample is 4,828 privately owned UNSAFE filings from cycles 8 and 9. **Method.** A pre-registered discrete-time hazard model (locked before any repair time was seen) related time to repair clearance to citywide workload, with jackknife intervals over 40 quarters. **Findings.** Workload was not linked to slower repair clearance: hazard ratio 0.991 per wave unit (95% interval 0.856 to 1.148). That rules out a slowdown of 20% or more per 30-day step; roughly, waits change by 13% shorter to 17% longer per wave unit. The early-filer check (1.235, 0.797 to 1.914) and the shed test (0.971, 0.748 to 1.259) were inconclusive. **What is new.** A keyword search of DOB's December 2025 FISP study found no earlier test of whether the deadline calendar slows repairs; no wider literature search was done. **Practical use.** For DOB rule writers and the City Council, repair clearance gives no reason to spread out the Feb 21 deadline; the shed question stays open.
+
 **Status of this file.** Every Family 1 number below comes from `writeup/gate2-family1-results.md` (the runner's own output; `figures/gate2_family1_*.csv` holds the same tables) or from `PREREG.md`, and is cited there. Every Family 2 number comes from `writeup/gate2-family2-results.md` unless another source is named. Anything not checked against a source is marked **UNVERIFIED**. Family 1 (repair clearance, the headline) is sections 3 to 7. Family 2 (sidewalk-shed permits, secondary and weaker evidence) is section 8; it ran after Family 1.
 
 ---
@@ -53,10 +57,12 @@ All data are public NYC Open Data. Only aggregated results appear in this report
 
 | Source | What | Pulled |
 |---|---|---|
-| DOB NOW: Safety - Facades Compliance Filings, dataset `xubg-57si` (https://data.cityofnewyork.us/d/xubg-57si), Department of Buildings | 87,455 rows, one snapshot; filing type, rating, dates, cycle, building number, tax block | Oct 17, 2026 |
-| DOB NOW: Build - Approved Permits, dataset `rbx6-tga4` (https://data.cityofnewyork.us/d/rbx6-tga4), Department of Buildings (Family 2 only) | 1,016,520 rows, one snapshot; permit type, status, dates, building number | Oct 18, 2026 |
-| DOB Permit Issuance, older BIS system, dataset `ipu4-2q9a` (https://data.cityofnewyork.us/d/ipu4-2q9a), Department of Buildings (Family 2 only) | 3,990,985 rows, one snapshot; permit type, status, dates, building number | Oct 18, 2026 |
-| Primary Land Use Tax Lot Output (PLUTO, the city's tax-lot file) release 26v2, dataset `64uk-42ks` (https://data.cityofnewyork.us/d/64uk-42ks), Department of City Planning | 858,284 tax lots; only owner category and number of floors were used | Oct 18, 2026 |
+| DOB NOW: Safety - Facades Compliance Filings, dataset `xubg-57si` (https://data.cityofnewyork.us/d/xubg-57si), Department of Buildings | 87,455 rows, one snapshot, about 79.8 MB as downloaded (two JSON pages); filing type, rating, dates, cycle, building number, tax block | Oct 17, 2026 |
+| DOB NOW: Build - Approved Permits, dataset `rbx6-tga4` (https://data.cityofnewyork.us/d/rbx6-tga4), Department of Buildings (Family 2 only) | 1,016,520 rows, one snapshot, 324,735,974 bytes as downloaded (selected columns only); permit type, status, dates, building number | Oct 18, 2026 |
+| DOB Permit Issuance, older BIS system, dataset `ipu4-2q9a` (https://data.cityofnewyork.us/d/ipu4-2q9a), Department of Buildings (Family 2 only) | 3,990,985 rows, one snapshot, 658,543,732 bytes as downloaded (selected columns only); permit type, status, dates, building number | Oct 18, 2026 |
+| Primary Land Use Tax Lot Output (PLUTO, the city's tax-lot file) release 26v2, dataset `64uk-42ks` (https://data.cityofnewyork.us/d/64uk-42ks), Department of City Planning | 858,284 tax lots, 81,989,193 bytes as downloaded (selected columns only); only owner category and number of floors were used | Oct 18, 2026 |
+
+Sizes are from `data/raw/SOURCES.md` sections 3 to 6.
 
 **Terms of use.** None of these datasets lists a license. NYC's Open Data Law (Administrative Code 23-502(d), https://intro.nyc/local-laws/2012-11 and https://intro.nyc/local-laws/2017-251, read Oct 17, 2026) allows reuse as long as the source, version and changes are stated. The datasets are provided without warranty, so no figure here is an official DOB or DCP statistic. Downloads and file hashes are logged in `data/raw/SOURCES.md`.
 
@@ -125,6 +131,8 @@ Hazard ratio (HR) per wave unit of workload. Below 1 means repairs clear more sl
 | C6 | early filers | 30 | 722 | 1.235 (0.797 to 1.914) | 0.3322 | not significant (threshold 0.025) | inconclusive |
 
 **In words.** For all filings, the data fit anything from a chance of clearing about 14% lower per step to about 15% higher per step when workload rises by one wave unit. The 0.80 line (the pre-registered "meaningful slowdown") is outside the interval, so a slowdown that big is ruled out. For early filers, the interval runs from 0.797 to 1.914: too wide to rule a slowdown in or out. The estimate above 1 is not evidence that repairs go faster.
+
+**In real units.** Of the 4,828 filings in C5, 3,207 (66%) reached a repair-clearance filing before follow-up ended. If the hazard is steady over time, waiting time scales roughly with 1 / HR (the same rule `PREREG.md` section 7.5 uses to turn HR 0.80 into "about 25% longer"). So C5's interval means one extra wave unit changes the wait by somewhere between about 13% shorter (1/1.148) and about 17% longer (1/0.856), best estimate under 1%. Against DOB's 90-day repair clock, 17% would be about 15 days. This is an illustration, not a measured number: the median wait in days was not computed in the frozen run, and getting it would need a new run.
 
 **Placebos** (on M5; source: results file section 3). PL1, quiet months of deadline years: HR 0.944 (0.660 to 1.350). PL2, workload in the 90 days after filing: HR 0.988 (0.672 to 1.451). Both intervals include 1, as expected, and the PL1 warning did not trigger.
 
@@ -226,6 +234,8 @@ The "reading" column was filled in by Claude while drafting this report, by appl
 
 In 4,828 repair-clearance records from cycles 8 and 9, a busier city (more UNSAFE filings in the last 90 days) was not linked to slower repair clearance: 0.991 per wave unit (0.856 to 1.148). For this pooled sample, that rules out a slowdown bigger than about 20%, the size the plan called meaningful. The shed-permit test points the same way (0.971 per wave unit) but is far less precise. It is inconclusive and cannot rule out a 20% to 25% slowdown, because pre-2026 permit terms blur when sheds came down. Neither family can say whether early filers behave the same way, so the study cannot yet separate a shared bottleneck from owner behavior. What would settle more: the Feb 2027 deadline wave as a live replication (E6). Shed permits now last 90 days, which should make removal dates sharper (a guess, UNVERIFIED).
 
+**Who could use this.** The intended readers are the Department of Buildings staff who write the FISP rules and the City Council members who oversee them. The decision it bears on is whether the three groups' shared Feb 21 deadline should be spread out to protect repair times. On this evidence, repair clearance gives no reason to do so; the shed question stays open. Anyone can rerun it: it needs only the public files in section 3, and the frozen runner, which took 52 seconds on the machine used (section 10), and it can be repeated after each deadline wave.
+
 ## 10. Reproducibility
 - Code: `src/` at tags `gate2-code-frozen` (eb5c6dc) and `gate2-run-frozen` (87759a8). Run command: `.venv/bin/python -I src/gate2_run.py --real --family 1` (needs `data/GO_family1.txt`). Run time was 52 seconds.
 - Outputs: `writeup/gate2-family1-results.md`, `figures/gate2_family1_*.csv` (aggregates only).
@@ -235,4 +245,4 @@ In 4,828 repair-clearance records from cycles 8 and 9, a busier city (more UNSAF
 - Raw data are not in the repository. They can be re-downloaded by code (`src/download_xubg_57si.py`, `src/download_open_data.py`), and file hashes are in `data/raw/SOURCES.md`.
 
 ---
-Who did what: see "Acknowledgments and AI use" in the README.
+Who did what: see "Acknowledgments and AI use" in the README. AI tools used: Claude Sonnet 5.5 and Claude Opus 5.5 (Anthropic), run in Claude Code, Oct 16 to Nov 15, 2026, for code, analysis and writing. No teacher, mentor or other adult helped with this work; all help came from the AI tools named above.

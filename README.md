@@ -87,6 +87,7 @@ These dates and IDs cannot be proven from this repository alone. The private his
 
 ## Edits made to copied files for this public copy
 
+- Nov 15, 2026 update: `writeup/REPORT.md` gained an abstract, download sizes in the data table, an "In real units" paragraph (an approximation, labelled), a "Who could use this" paragraph and the AI-tools and no-adult-help line; this README gained the same AI line and an intended-reader line. No number, test or finding changed.
 - `writeup/REPORT.md`: removed the "PRIVATE DRAFT" line, the note that Jayden Ling had not checked the draft, and the
   editor's notes at the end; changed two phrases that named private files or sessions (limitation 4 and the start of
   section 8); added one line in section 10 about commit IDs. No number, test or finding was changed.
@@ -113,3 +114,7 @@ the first real run on repair clearance and the run on shed permits (both Oct 22)
 the code and drafted the pre-registration, the report and this text under my direction. On Oct 26, 2026 I read and approved
 this README and sections 1 and 7 of the report. Before the first real run I read only a plain-English summary of the pre-registration. The numbers were
 checked against the result files by Claude, not by me.
+
+AI tools used: Claude Sonnet 5.5 and Claude Opus 5.5 (Anthropic), run in Claude Code, Oct 16 to Nov 15, 2026. No teacher, mentor or other adult helped with this work; all help came from the AI tools named above.
+
+Intended reader: the Department of Buildings staff who write the FISP rules and the City Council members who oversee them, when they decide whether the shared Feb 21 deadline needs to be spread out to protect repair times.
