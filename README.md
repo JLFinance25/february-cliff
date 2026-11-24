@@ -118,3 +118,7 @@ checked against the result files by Claude, not by me.
 AI tools used: Claude Sonnet 5.5 and Claude Opus 5.5 (Anthropic), run in Claude Code, Oct 16 to Nov 15, 2026. No teacher, mentor or other adult helped with this work; all help came from the AI tools named above.
 
 Intended reader: the Department of Buildings staff who write the FISP rules and the City Council members who oversee them, when they decide whether the shared Feb 21 deadline needs to be spread out to protect repair times.
+
+## Related papers
+
+More pre-registered studies by Jayden Ling are on Zenodo: [all papers](https://zenodo.org/search?q=creators.name%3A%22Ling%2C%20Jayden%22). Flagship: *When do operations-research models beat simple baselines on public data? 38 pre-specified tests*, [doi:10.5281/zenodo.24280952](https://doi.org/10.5281/zenodo.24280952). This repo has no Zenodo record of its own yet. Sibling repos: [number-guard](https://github.com/JLFinance25/number-guard), [phantom-answers](https://github.com/JLFinance25/phantom-answers), [date-label-leak](https://github.com/JLFinance25/date-label-leak), [february-cliff](https://github.com/JLFinance25/february-cliff), [chronology-pairs](https://github.com/JLFinance25/chronology-pairs).
